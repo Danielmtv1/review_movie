@@ -3,7 +3,7 @@ from fastapi import Depends, HTTPException, status
 from project.data_base import User
 from datetime import datetime, timedelta
 from fastapi.security import OAuth2PasswordBearer
-
+from local_settings import SECRET_KEY1
 # import os
 
 # SECRET_KEY = os.environ.get("SECRET_KEY")
@@ -16,7 +16,7 @@ from fastapi.security import OAuth2PasswordBearer
 #    }
 #    return jwt.encode(data, SECRET_KEY, algorithm="HS256")
 
-SECRET_KEY = "goremovie23"
+SECRET_KEY = SECRET_KEY1
 
 oauth2_schema = OAuth2PasswordBearer(tokenUrl="/api/v1/auth")
 
