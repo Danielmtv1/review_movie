@@ -3,7 +3,7 @@ from project.schemas import UserRequestModel, UserResponseModel, ReviewResponseM
 from fastapi import HTTPException, APIRouter, Response, Depends
 from fastapi.security import HTTPBasicCredentials
 from typing import List
-from common import get_current_user
+from project.common import get_current_user
 
 router = APIRouter(prefix='/users', tags=['Users'])
 

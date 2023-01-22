@@ -3,7 +3,7 @@ from fastapi.security import OAuth2PasswordRequestForm
 from project.data_base import User, Movie, UserReview
 from project.data_base import database as connection
 from .routers import user_router, review_router, movie_router
-from common import create_access_token
+from project.common import create_access_token
 import logging
 
 

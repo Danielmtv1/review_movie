@@ -7,7 +7,7 @@ from project.schemas import (
     ReviewRequestPutModel,
 
 )
-from common import get_current_user
+from project.common import get_current_user
 from ..routers.movies import create_movie
 
 router = APIRouter(prefix="/reviews", tags=["Reviews"])
