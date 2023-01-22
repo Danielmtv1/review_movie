@@ -5,7 +5,7 @@ from project.schemas import (
     ReviewRequestMovie,
     ReviewResponseModel,
     ReviewRequestPutModel,
-
+    UserRequestModel
 )
 from project.common import get_current_user
 from ..routers.movies import create_movie
@@ -21,12 +21,14 @@ def _create_movie_if_not_exist(title: str) -> None:
             raise HTTPException(status_code=409, detail="movie not found")
 
 
-@router.post("", response_model=ReviewResponseModel,)
+@router.post("", response_model=ReviewResponseModel)
 async def create_review(
     review_request: ReviewRequestMovie, user: User = Depends(get_current_user)
 ):
     _create_movie_if_not_exist(review_request.title)
-
+    if review_request.score < 0 or review_request.score > 5:
+        raise HTTPException(
+            status_code=409, detail="the score must be a number between 1 and 5")
     movie = Movie.get(title=review_request.title)
     user_review = UserReview.create(
         user_id=user.id,

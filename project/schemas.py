@@ -51,7 +51,7 @@ class MovieResponseModel(ResponseModel):
 class Review_Validator():
     @validator('score')
     def score_validator(cls, score):
-        print("juego")
+
         if score < 0 or score > 5:
             raise HTTPException(409,
                                 "the score range is an integer between 0 and 5")
@@ -89,7 +89,7 @@ class MovieResponsesApiModel(ResponseModel):
     imdbID: str | None
 
 
-class ReviewResponseModel(ResponseModel, Review_Validator):
+class ReviewResponseModel(ResponseModel):
 
     movie: MovieResponseApiModel  # objeto relacionado cool
     reviews: str
@@ -97,7 +97,7 @@ class ReviewResponseModel(ResponseModel, Review_Validator):
 
     @validator('score')
     def score_validator(cls, score):
-        print("juego")
+
         if score < 0 or score > 5:
             raise HTTPException(409,
                                 "the score range is an integer between 0 and 5")
