@@ -2,10 +2,11 @@ from project.data_base import Movie
 from project.schemas import MovieResponseApiModel, MovieResponsesApiModel
 from fastapi import APIRouter, HTTPException
 import requests
+from local_settings import PERSONAL_OMDB_API_KEY
 
 router = APIRouter(prefix="/movies", tags=["Movies"])
 
-OMDB_API_KEY = '10bd0f51'
+OMDB_API_KEY = PERSONAL_OMDB_API_KEY
 OMDB_API_URL = 'http://www.omdbapi.com/'
 
 
